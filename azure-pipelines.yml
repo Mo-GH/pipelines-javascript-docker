@@ -17,6 +17,19 @@ steps:
 - task: Docker@2
   inputs:
     containerRegistry: 'dockerregister'
-    repository: 'pipelines-javascript-docker'
+    repository: '$(imageName)'
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
+
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: 'Pay-As-You-Go (391a83b9-1ec3-4308-9d0e-773e5cfd392a)'
+    subscriptionId: '391a83b9-1ec3-4308-9d0e-773e5cfd392a'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: 'Workshop-RG-Co'
+    location: 'West Europe'
+    templateLocation: 'URL of the file'
+    csmFileLink: 'https://raw.githubusercontent.com/Mo-GH/devops-project-samples/master/java/spring/container/ArmTemplates/container-webapp-template.json'
+    overrideParameters: '-imageName $(imageName)'
+    deploymentMode: 'Incremental'
