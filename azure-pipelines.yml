@@ -23,7 +23,7 @@ steps:
     resourceGroupName: 'Workshop-RG-Co'
     location: 'West Europe'
     templateLocation: 'URL of the file'
-    csmFile: 'https://raw.githubusercontent.com/Mo-GH/devops-project-samples/master/java/spring/container/ArmTemplates/containerRegistry-template.json'
+    csmFileLink: 'https://raw.githubusercontent.com/Mo-GH/devops-project-samples/master/java/spring/container/ArmTemplates/containerRegistry-template.json'
     overrideParameters: '-registryName $(registername)'
     deploymentMode: 'Incremental'
 
