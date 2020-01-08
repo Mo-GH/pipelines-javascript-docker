@@ -22,10 +22,11 @@ steps:
     action: 'Create Or Update Resource Group'
     resourceGroupName: 'Workshop-RG-Co'
     location: 'West Europe'
-    templateLocation: 'Linked artifact'
+    templateLocation: 'URL of the file'
     csmFile: 'https://raw.githubusercontent.com/Mo-GH/devops-project-samples/master/java/spring/container/ArmTemplates/containerRegistry-template.json'
     overrideParameters: '-registryName $(registername)'
     deploymentMode: 'Incremental'
+
 
 - task: Docker@2
   inputs:
