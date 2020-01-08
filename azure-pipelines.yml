@@ -14,26 +14,28 @@ variables:
 
 steps:
 
-- task: AzureResourceManagerTemplateDeployment@3
-  inputs:
-    deploymentScope: 'Resource Group'
-    azureResourceManagerConnection: 'Workshop-RG-Co'
-    subscriptionId: '391a83b9-1ec3-4308-9d0e-773e5cfd392a'
-    action: 'Create Or Update Resource Group'
-    resourceGroupName: 'Workshop-RG-Co'
-    location: 'West Europe'
-    templateLocation: 'URL of the file'
-    csmFileLink: 'https://raw.githubusercontent.com/Mo-GH/devops-project-samples/master/java/spring/container/ArmTemplates/containerRegistry-template.json'
-    overrideParameters: '-registryName workshopcregistry'
-    deploymentMode: 'Incremental'
+# - task: AzureResourceManagerTemplateDeployment@3
+ #  inputs:
+ #    deploymentScope: 'Resource Group'
+ #    azureResourceManagerConnection: 'Workshop-RG-Co'
+ #    subscriptionId: '391a83b9-1ec3-4308-9d0e-773e5cfd392a'
+ #    action: 'Create Or Update Resource Group'
+ #    resourceGroupName: 'Workshop-RG-Co'
+ #    location: 'West Europe'
+ #    templateLocation: 'URL of the file'
+ #    csmFileLink: 'https://raw.githubusercontent.com/Mo-GH/devops-project-samples/master/java/spring/container/ArmTemplates/containerRegistry-template.json'
+ #    overrideParameters: '-registryName workshopcregistry'
+ #    deploymentMode: 'Incremental'
+
 
 
 - task: Docker@2
   inputs:
     containerRegistry: 'dockerregister'
-    repository: '$(imageName)'
+    repository: 'jswebappcoimage'
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
+
 
 - task: AzureResourceManagerTemplateDeployment@3
   inputs:
