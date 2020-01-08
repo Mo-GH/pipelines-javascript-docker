@@ -28,14 +28,12 @@ steps:
  #    deploymentMode: 'Incremental'
 
 
-
 - task: Docker@2
   inputs:
     containerRegistry: 'dockerregister'
     repository: 'jswebappcoimage'
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
-
 
 - task: AzureResourceManagerTemplateDeployment@3
   inputs:
