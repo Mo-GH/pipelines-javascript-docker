@@ -24,7 +24,7 @@ steps:
     location: 'West Europe'
     templateLocation: 'URL of the file'
     csmFileLink: 'https://raw.githubusercontent.com/Mo-GH/devops-project-samples/master/java/spring/container/ArmTemplates/containerRegistry-template.json'
-    overrideParameters: '-registryName $(registername)'
+    overrideParameters: '-registryName workshopcregistry'
     deploymentMode: 'Incremental'
 
 
